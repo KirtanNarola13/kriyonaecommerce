@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 3),
       () {
         Navigator.of(context).pushReplacementNamed('home_page');
       },

@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       style: optionStyle,
     ),
     Text(
-      'Cart',
+      'Bag',
       style: optionStyle,
     ),
     Text(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             splashRadius: 20,
             onPressed: () {},
             icon: Icon(
-              Icons.shopping_cart_outlined,
+              LineIcons.shoppingBag,
               color: Colors.grey.shade700,
             ),
           ),
@@ -183,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                                         right: 17,
                                         left: 5,
                                       ),
-                                      height: height / 2.8,
+                                      height: height / 2.6,
                                       width: width / 1.8,
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
@@ -454,8 +454,8 @@ class _HomePageState extends State<HomePage> {
                   text: 'Likes',
                 ),
                 GButton(
-                  icon: LineIcons.search,
-                  text: 'Search',
+                  icon: LineIcons.shoppingBag,
+                  text: 'Bag',
                 ),
                 GButton(
                   icon: LineIcons.user,
