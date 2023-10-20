@@ -1,16 +1,13 @@
-# kriyona
+![WhatsApp Image 2023-10-20 at 11 05 30 PM](https://github.com/KirtanNarola13/kriyonaecommerce/assets/133342879/ea6e4516-cf91-4fce-ab84-ad5cffea4751)
 
-A new Flutter project.
 
-## Getting Started
+![WhatsApp Image 2023-10-20 at 11 05 31 PM](https://github.com/KirtanNarola13/kriyonaecommerce/assets/133342879/4722134b-c4a0-4b38-94c7-190677977835)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![WhatsApp Image 2023-10-20 at 11 05 31 PM (1)](https://github.com/KirtanNarola13/kriyonaecommerce/assets/133342879/00d6b841-1116-4891-9be7-18d0f1de5cae)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![WhatsApp Image 2023-10-20 at 11 05 32 PM](https://github.com/KirtanNarola13/kriyonaecommerce/assets/133342879/ec81a44c-0e06-4b9e-86cc-5dfdfbc74aa9)
+
+
+![WhatsApp Image 2023-10-20 at 11 05 32 PM (1)](https://github.com/KirtanNarola13/kriyonaecommerce/assets/133342879/f8345b45-712d-4889-979a-c2ed180abced)
