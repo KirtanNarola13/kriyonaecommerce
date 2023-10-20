@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:kriyona/utils/globle.dart';
 import 'package:line_icons/line_icons.dart';
+
+import '../utils/globle.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -52,29 +54,11 @@ class _HomePageState extends State<HomePage> {
           "KRIYONA",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 13,
-            letterSpacing: 3,
+            fontSize: 16,
+            letterSpacing: 5,
           ),
         ),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            splashRadius: 20,
-            onPressed: () {},
-            icon: Icon(
-              Icons.favorite_outline,
-              color: Colors.black,
-            ),
-          ),
-          IconButton(
-            splashRadius: 20,
-            onPressed: () {},
-            icon: Icon(
-              LineIcons.shoppingBag,
-              color: Colors.black,
-            ),
-          ),
-        ],
+        centerTitle: true,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -165,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           SizedBox(
-                            height: height / 50,
+                            height: height / 45,
                           ),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -204,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                               color: Colors.white,
                                               border: Border.all(
-                                                color: Colors.grey.shade700,
+                                                color: Colors.grey,
                                                 width: 1,
                                               ),
                                             ),
@@ -391,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                                                     Radius.circular(20),
                                               ),
                                               border: Border.all(
-                                                color: Colors.grey.shade700,
+                                                color: Colors.grey,
                                                 width: 1,
                                               ),
                                             ),

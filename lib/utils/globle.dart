@@ -190,3 +190,5 @@ List<Map<String, dynamic>> allProduct = [
     ],
   },
 ];
+
+List<Map<String, dynamic>> CartList = [];

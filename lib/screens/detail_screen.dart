@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kriyona/utils/globle.dart';
 import 'package:line_icons/line_icons.dart';
 
 class DetailPage extends StatefulWidget {
@@ -51,12 +52,34 @@ class _DetailPageState extends State<DetailPage> {
                         letterSpacing: 5,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        LineIcons.shoppingBag,
-                        color: Colors.grey.shade700,
-                      ),
+                    Stack(
+                      alignment: Alignment(0.5, 1.8),
+                      children: [
+                        IconButton(
+                          splashRadius: 20,
+                          onPressed: () {},
+                          icon: Icon(
+                            LineIcons.shoppingBag,
+                            color: Colors.grey.shade700,
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: height / 30,
+                          width: width / 30,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Text(
+                            "${CartList.length}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -160,6 +183,13 @@ class _DetailPageState extends State<DetailPage> {
                               height: height / 0.8,
                               width: width / 2,
                               decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 10,
+                                    blurStyle: BlurStyle.outer,
+                                  ),
+                                ],
                                 color: Colors.grey.shade500.withOpacity(0.3),
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(20),
@@ -192,6 +222,13 @@ class _DetailPageState extends State<DetailPage> {
                                   color: Colors.grey.shade700,
                                   width: 2,
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 10,
+                                    blurStyle: BlurStyle.outer,
+                                  ),
+                                ],
                               ),
                               child: Icon(LineIcons.heart),
                             ),
