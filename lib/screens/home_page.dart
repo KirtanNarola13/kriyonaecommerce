@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-
 import '../utils/globle.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 1,
         toolbarHeight: height / 12,
@@ -67,258 +67,199 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: height / 25,
-              ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 7,
-                  ),
-                  height: height / 16,
-                  width: width / 1.2,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(40),
-                    ),
-                    border: Border.all(
-                      color: Colors.grey.shade700,
-                      width: 1,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Visibility(
+                visible: (isHome == true) ? true : false,
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.search_outlined,
-                            color: Colors.grey.shade700,
+                      SizedBox(
+                        height: height / 25,
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 7,
                           ),
-                          SizedBox(
-                            width: width / 35,
-                          ),
-                          Text(
-                            "search product",
-                            style: TextStyle(
-                              color: Colors.grey.shade700,
-                              letterSpacing: 2,
-                              fontSize: 12,
+                          height: height / 16,
+                          width: width / 1.2,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(40),
                             ),
-                          )
-                        ],
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.camera_alt_outlined,
-                            color: Colors.grey.shade700,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: height / 50,
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: allProduct.map((e) {
-                    List<Map<String, dynamic>> data = e['categoryProduct'];
-                    return Container(
-                      margin: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      padding: const EdgeInsets.only(
-                        top: 15,
-                        left: 10,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "${e['category']}",
-                            style: TextStyle(
+                            border: Border.all(
                               color: Colors.grey.shade700,
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1,
+                              width: 1,
                             ),
                           ),
-                          SizedBox(
-                            height: height / 45,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.search_outlined,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                  SizedBox(
+                                    width: width / 35,
+                                  ),
+                                  Text(
+                                    "search product",
+                                    style: TextStyle(
+                                      color: Colors.grey.shade700,
+                                      letterSpacing: 2,
+                                      fontSize: 12,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.camera_alt_outlined,
+                                    color: Colors.grey.shade700,
+                                  ))
+                            ],
                           ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ...data.map((e) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pushNamed(
-                                          'detail_page',
-                                          arguments: e);
-                                    },
-                                    child: Container(
-                                      margin: const EdgeInsets.only(
-                                        right: 17,
-                                        left: 5,
-                                      ),
-                                      height: height / 2.6,
-                                      width: width / 1.8,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          bottomRight: Radius.circular(20),
-                                        ),
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
+                        ),
+                      ),
+                      SizedBox(
+                        height: height / 50,
+                      ),
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: allProduct.map((e) {
+                            List<Map<String, dynamic>> data =
+                                e['categoryProduct'];
+                            return Container(
+                              margin: EdgeInsets.only(
+                                top: 10,
+                              ),
+                              padding: const EdgeInsets.only(
+                                top: 15,
+                                left: 10,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${e['category']}",
+                                    style: TextStyle(
+                                      color: Colors.grey.shade700,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height / 45,
+                                  ),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        ...data.map((e) {
+                                          return Container(
+                                            margin: const EdgeInsets.only(
+                                              right: 17,
+                                              left: 5,
+                                            ),
+                                            height: height / 2.6,
+                                            width: width / 1.8,
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
                                               borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(20),
                                                 bottomRight:
                                                     Radius.circular(20),
                                               ),
-                                              color: Colors.white,
-                                              border: Border.all(
-                                                color: Colors.grey,
-                                                width: 1,
-                                              ),
                                             ),
-                                            child: Column(
+                                            child: Stack(
                                               children: [
-                                                Expanded(
-                                                  flex: 2,
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.of(context)
+                                                        .pushNamed(
+                                                            'detail_page',
+                                                            arguments: e);
+                                                  },
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.only(
                                                         topLeft:
                                                             Radius.circular(20),
-                                                      ),
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: NetworkImage(
-                                                          "${e['thumbnail']}",
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Container(
-                                                    padding: EdgeInsets.all(10),
-                                                    alignment:
-                                                        Alignment.topLeft,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.only(
                                                         bottomRight:
                                                             Radius.circular(20),
                                                       ),
-                                                      color:
-                                                          Colors.grey.shade100,
+                                                      color: Colors.white,
+                                                      border: Border.all(
+                                                        color: Colors.grey,
+                                                        width: 1,
+                                                      ),
                                                     ),
                                                     child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
                                                       children: [
-                                                        Text(
-                                                          "${e['name']}",
-                                                          style: TextStyle(
-                                                            color: Colors
-                                                                .grey.shade700,
-                                                          ),
-                                                        ),
-                                                        Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            RatingBar.builder(
-                                                              initialRating:
-                                                                  double.parse(
-                                                                      "${e['rating']}"),
-                                                              minRating: 1,
-                                                              direction: Axis
-                                                                  .horizontal,
-                                                              allowHalfRating:
-                                                                  true,
-                                                              itemCount: 5,
-                                                              itemSize: 18,
-                                                              ignoreGestures:
-                                                                  true,
-                                                              itemPadding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          1),
-                                                              itemBuilder:
-                                                                  (context,
-                                                                          _) =>
-                                                                      Icon(
-                                                                Icons.star,
-                                                                color: Colors
-                                                                    .amberAccent,
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20),
                                                               ),
-                                                              onRatingUpdate:
-                                                                  (rating) {},
-                                                            ),
-                                                            Text(
-                                                              "(${e['ratingcount']})",
-                                                              style: TextStyle(
-                                                                color:
-                                                                    Colors.grey,
-                                                                fontSize: 9,
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Container(
-                                                          height: height / 150,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            border: Border(
-                                                              bottom:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .shade700,
-                                                                width: 1,
+                                                              image:
+                                                                  DecorationImage(
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                image:
+                                                                    NetworkImage(
+                                                                  "${e['thumbnail']}",
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Row(
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Container(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    10),
+                                                            alignment: Alignment
+                                                                .topLeft,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              color: Colors.grey
+                                                                  .shade100,
+                                                            ),
+                                                            child: Column(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
-                                                                      .start,
+                                                                      .spaceAround,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
-                                                                      .end,
+                                                                      .start,
                                                               children: [
-                                                                SizedBox(
-                                                                  width: width /
-                                                                      50,
-                                                                ),
                                                                 Text(
-                                                                  "₹ ${e['price']}",
+                                                                  "${e['name']}",
                                                                   style:
                                                                       TextStyle(
                                                                     color: Colors
@@ -326,77 +267,681 @@ class _HomePageState extends State<HomePage> {
                                                                         .shade700,
                                                                   ),
                                                                 ),
-                                                                SizedBox(
-                                                                  width: width /
-                                                                      90,
+                                                                Row(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    RatingBar
+                                                                        .builder(
+                                                                      initialRating:
+                                                                          double.parse(
+                                                                              "${e['rating']}"),
+                                                                      minRating:
+                                                                          1,
+                                                                      direction:
+                                                                          Axis.horizontal,
+                                                                      allowHalfRating:
+                                                                          true,
+                                                                      itemCount:
+                                                                          5,
+                                                                      itemSize:
+                                                                          18,
+                                                                      ignoreGestures:
+                                                                          true,
+                                                                      itemPadding:
+                                                                          EdgeInsets.symmetric(
+                                                                              horizontal: 1),
+                                                                      itemBuilder:
+                                                                          (context, _) =>
+                                                                              Icon(
+                                                                        Icons
+                                                                            .star,
+                                                                        color: Colors
+                                                                            .amberAccent,
+                                                                      ),
+                                                                      onRatingUpdate:
+                                                                          (rating) {},
+                                                                    ),
+                                                                    Text(
+                                                                      "(${e['ratingcount']})",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .grey,
+                                                                        fontSize:
+                                                                            9,
+                                                                      ),
+                                                                    )
+                                                                  ],
                                                                 ),
-                                                                Text(
-                                                                  // "(${e['discount']}% off)",
-                                                                  "${e['faceprice']}",
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .grey,
-                                                                    fontSize:
-                                                                        12,
-                                                                    decoration:
-                                                                        TextDecoration
-                                                                            .lineThrough,
+                                                                Container(
+                                                                  height:
+                                                                      height /
+                                                                          150,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    border:
+                                                                        Border(
+                                                                      bottom:
+                                                                          BorderSide(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade700,
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                    ),
                                                                   ),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .start,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          width:
+                                                                              width / 50,
+                                                                        ),
+                                                                        Text(
+                                                                          "₹ ${e['price']}",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.grey.shade700,
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              width / 90,
+                                                                        ),
+                                                                        Text(
+                                                                          // "(${e['discount']}% off)",
+                                                                          "${e['faceprice']}",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.grey,
+                                                                            fontSize:
+                                                                                12,
+                                                                            decoration:
+                                                                                TextDecoration.lineThrough,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Text(
+                                                                      "(${e['discount']}% off)",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .red,
+                                                                        fontSize:
+                                                                            10,
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ],
                                                             ),
-                                                            Text(
-                                                              "(${e['discount']}% off)",
-                                                              style: TextStyle(
-                                                                color:
-                                                                    Colors.red,
-                                                                fontSize: 10,
-                                                              ),
-                                                            ),
-                                                          ],
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
                                                 ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    e['isBuy'] = !e['isBuy'];
+                                                    (e['isBuy'] != false)
+                                                        ? cartList.add(e)
+                                                        : cartList.remove(data);
+                                                    setState(() {});
+                                                  },
+                                                  child: Container(
+                                                    height: height / 18.5,
+                                                    width: width / 10,
+                                                    decoration: BoxDecoration(
+                                                      color: Colors
+                                                          .grey.shade500
+                                                          .withOpacity(0.3),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(20),
+                                                        bottomRight:
+                                                            Radius.circular(20),
+                                                      ),
+                                                      border: Border.all(
+                                                        color: Colors.grey,
+                                                        width: 1,
+                                                      ),
+                                                    ),
+                                                    child: (e['isBuy'] != true)
+                                                        ? Icon(
+                                                            Icons
+                                                                .add_shopping_cart,
+                                                            color: Colors
+                                                                .grey.shade700,
+                                                            size: 18,
+                                                          )
+                                                        : Icon(
+                                                            Icons
+                                                                .remove_circle_outline,
+                                                            color: Colors.red
+                                                                .withOpacity(
+                                                                    0.8),
+                                                            size: 18,
+                                                          ),
+                                                  ),
+                                                ),
                                               ],
                                             ),
-                                          ),
-                                          Container(
-                                            height: height / 18.5,
-                                            width: width / 10,
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey.shade500
-                                                  .withOpacity(0.3),
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(20),
-                                                bottomRight:
-                                                    Radius.circular(20),
-                                              ),
-                                              border: Border.all(
-                                                color: Colors.grey,
-                                                width: 1,
-                                              ),
-                                            ),
-                                            child: Icon(
-                                              Icons.add_shopping_cart,
-                                              color: Colors.grey.shade700,
-                                              size: 18,
-                                            ),
-                                          ),
-                                        ],
+                                          );
+                                        }),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: (isFav == true) ? true : false,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: favList
+                        .map(
+                          (e) => Container(
+                            height: height / 6,
+                            width: width / 0.9,
+                            margin:
+                                EdgeInsets.only(top: 30, left: 20, right: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade300.withOpacity(0.3),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(25),
+                                ),
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2,
+                                )),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(25),
+                                        bottomLeft: Radius.circular(25),
+                                      ),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                            NetworkImage("${e['thumbnail']}"),
                                       ),
                                     ),
-                                  );
-                                }),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 6,
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                        top: 20,
+                                        left: 10,
+                                        right: 10,
+                                        bottom: 10),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        left: BorderSide(
+                                          color: Colors.grey,
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.topLeft,
+                                                child: Text(
+                                                  "${e['name']}",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.topRight,
+                                                child: Text(
+                                                  "₹ ${e['price']}",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height / 80,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                RatingBar.builder(
+                                                  initialRating: double.parse(
+                                                      "${e['rating']}"),
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 14,
+                                                  ignoreGestures: true,
+                                                  itemPadding:
+                                                      EdgeInsets.symmetric(
+                                                          horizontal: 1),
+                                                  itemBuilder: (context, _) =>
+                                                      Icon(
+                                                    Icons.star,
+                                                    color: Colors.amberAccent,
+                                                  ),
+                                                  onRatingUpdate: (rating) {},
+                                                ),
+                                                Text(
+                                                  "(${e['ratingcount']})",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 9,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  "${e['faceprice']}",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 10,
+                                                    decoration: TextDecoration
+                                                        .lineThrough,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: width / 120,
+                                                ),
+                                                Text(
+                                                  "(%${e['discount']} off)",
+                                                  style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontSize: 12,
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height / 50,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                cartList.add(e);
+                                                setState(() {});
+                                              },
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                height: height / 30,
+                                                width: width / 4,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(20),
+                                                  ),
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                child: Text(
+                                                  (e['isBuy'] != true)
+                                                      ? "Buy Now"
+                                                      : "Remove",
+                                                  style: TextStyle(
+                                                    color: Colors.grey.shade700,
+                                                    fontSize: 12,
+                                                    letterSpacing: 2,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                e['isLike'] = !e['isLike'];
+                                                favList.remove(e);
+                                                setState(() {});
+                                              },
+                                              child: Container(
+                                                height: height / 30,
+                                                width: width / 8,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(20),
+                                                  ),
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                child: (e['isLike'] == false)
+                                                    ? Icon(
+                                                        LineIcons.heart,
+                                                        size: 16,
+                                                      )
+                                                    : Icon(
+                                                        Icons.favorite,
+                                                        color: Colors.red
+                                                            .withOpacity(
+                                                          0.5,
+                                                        ),
+                                                        size: 16,
+                                                      ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    );
-                  }).toList(),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: (isBag == true) ? true : false,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: cartList
+                        .map(
+                          (e) => Container(
+                            height: height / 6,
+                            width: width / 0.9,
+                            margin:
+                                EdgeInsets.only(top: 30, left: 20, right: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade300.withOpacity(0.3),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(25),
+                                ),
+                                border: Border.all(
+                                  color: Colors.grey,
+                                  width: 2,
+                                )),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(25),
+                                        bottomLeft: Radius.circular(25),
+                                      ),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                            NetworkImage("${e['thumbnail']}"),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 6,
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                        top: 20,
+                                        left: 10,
+                                        right: 10,
+                                        bottom: 10),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        left: BorderSide(
+                                          color: Colors.grey,
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.topLeft,
+                                                child: Text(
+                                                  "${e['name']}",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.topRight,
+                                                child: Text(
+                                                  "₹ ${e['price']}",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height / 80,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                RatingBar.builder(
+                                                  initialRating: double.parse(
+                                                      "${e['rating']}"),
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 14,
+                                                  ignoreGestures: true,
+                                                  itemPadding:
+                                                      EdgeInsets.symmetric(
+                                                          horizontal: 1),
+                                                  itemBuilder: (context, _) =>
+                                                      Icon(
+                                                    Icons.star,
+                                                    color: Colors.amberAccent,
+                                                  ),
+                                                  onRatingUpdate: (rating) {},
+                                                ),
+                                                Text(
+                                                  "(${e['ratingcount']})",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 9,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  "${e['faceprice']}",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 10,
+                                                    decoration: TextDecoration
+                                                        .lineThrough,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: width / 120,
+                                                ),
+                                                Text(
+                                                  "(%${e['discount']} off)",
+                                                  style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontSize: 12,
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height / 50,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                cartList.remove(e);
+                                                setState(() {});
+                                              },
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                height: height / 30,
+                                                width: width / 4,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(20),
+                                                  ),
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                child: Text(
+                                                  "Remove",
+                                                  style: TextStyle(
+                                                    color: Colors.grey.shade700,
+                                                    fontSize: 12,
+                                                    letterSpacing: 2,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                e['isLike'] = !e['isLike'];
+                                                favList.remove(e);
+                                                setState(() {});
+                                              },
+                                              child: Container(
+                                                height: height / 30,
+                                                width: width / 8,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(20),
+                                                  ),
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                child: (e['isLike'] == false)
+                                                    ? Icon(
+                                                        LineIcons.heart,
+                                                        size: 16,
+                                                      )
+                                                    : Icon(
+                                                        Icons.favorite,
+                                                        color: Colors.red
+                                                            .withOpacity(
+                                                          0.5,
+                                                        ),
+                                                        size: 16,
+                                                      ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
             ],
@@ -432,18 +977,46 @@ class _HomePageState extends State<HomePage> {
               haptic: true,
               tabs: [
                 GButton(
+                  onPressed: () {
+                    isHome = true;
+                    isFav = false;
+                    isBag = false;
+                    isProfile = false;
+                    setState(() {});
+                  },
                   icon: LineIcons.home,
                   text: 'Home',
                 ),
                 GButton(
+                  onPressed: () {
+                    isHome = false;
+                    isFav = true;
+                    isBag = false;
+                    isProfile = false;
+                    setState(() {});
+                  },
                   icon: LineIcons.heart,
                   text: 'Likes',
                 ),
                 GButton(
+                  onPressed: () {
+                    isHome = false;
+                    isFav = false;
+                    isBag = true;
+                    isProfile = false;
+                    setState(() {});
+                  },
                   icon: LineIcons.shoppingBag,
                   text: 'Bag',
                 ),
                 GButton(
+                  onPressed: () {
+                    isHome = false;
+                    isFav = false;
+                    isBag = false;
+                    isProfile = true;
+                    setState(() {});
+                  },
                   icon: LineIcons.user,
                   text: 'Profile',
                 ),

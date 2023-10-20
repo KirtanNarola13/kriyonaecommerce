@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:kriyona/utils/globle.dart';
 import 'package:line_icons/line_icons.dart';
@@ -12,7 +14,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController(
+    final PageController pageController = PageController(
       viewportFraction: 0.9, // Adjust this value as needed
     );
     Map<String, dynamic> data =
@@ -72,7 +74,7 @@ class _DetailPageState extends State<DetailPage> {
                             shape: BoxShape.circle,
                           ),
                           child: Text(
-                            "${CartList.length}",
+                            "${cartList.length}",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 10,
@@ -88,7 +90,7 @@ class _DetailPageState extends State<DetailPage> {
             Expanded(
               flex: 18,
               child: PageView.builder(
-                controller: _pageController,
+                controller: pageController,
                 itemCount: data['img'].length,
                 itemBuilder: (context, index) {
                   return Container(
@@ -178,59 +180,84 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              alignment: Alignment.center,
-                              height: height / 0.8,
-                              width: width / 2,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
-                                    blurStyle: BlurStyle.outer,
+                            GestureDetector(
+                              onTap: () {
+                                data['isBuy'] = !data['isBuy'];
+                                (data['isBuy'] != false)
+                                    ? cartList.add(data)
+                                    : cartList.remove(data);
+                                setState(() {});
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: height / 0.8,
+                                width: width / 2,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 10,
+                                      blurStyle: BlurStyle.outer,
+                                    ),
+                                  ],
+                                  color: Colors.grey.shade500.withOpacity(0.3),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
-                                ],
-                                color: Colors.grey.shade500.withOpacity(0.3),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
+                                  border: Border.all(
+                                    color: Colors.grey.shade700,
+                                    width: 2,
+                                  ),
                                 ),
-                                border: Border.all(
-                                  color: Colors.grey.shade700,
-                                  width: 2,
-                                ),
-                              ),
-                              child: Text(
-                                "Buy Now",
-                                style: TextStyle(
-                                  color: Colors.grey.shade700,
-                                  fontSize: 20,
-                                  letterSpacing: 5,
-                                  fontWeight: FontWeight.w500,
+                                child: Text(
+                                  (data['isBuy'] != true)
+                                      ? "Buy Now"
+                                      : "Remove",
+                                  style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontSize: 20,
+                                    letterSpacing: 5,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              height: height / 0.8,
-                              width: width / 6,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade500.withOpacity(0.3),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                                border: Border.all(
-                                  color: Colors.grey.shade700,
-                                  width: 2,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
-                                    blurStyle: BlurStyle.outer,
+                            GestureDetector(
+                              onTap: () {
+                                data['isLike'] = !data['isLike'];
+                                favList.add(data);
+                                setState(() {});
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: height / 0.8,
+                                width: width / 6,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade500.withOpacity(0.3),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
-                                ],
+                                  border: Border.all(
+                                    color: Colors.grey.shade700,
+                                    width: 2,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 10,
+                                      blurStyle: BlurStyle.outer,
+                                    ),
+                                  ],
+                                ),
+                                child: (data['isLike'] == false)
+                                    ? Icon(LineIcons.heart)
+                                    : Icon(
+                                        Icons.favorite,
+                                        color: Colors.red.withOpacity(
+                                          0.5,
+                                        ),
+                                      ),
                               ),
-                              child: Icon(LineIcons.heart),
                             ),
                           ],
                         ),

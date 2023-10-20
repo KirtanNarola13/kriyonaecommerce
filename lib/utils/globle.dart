@@ -31,6 +31,8 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/61H-EYslpUL._UL1500_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
       {
         'name': 'Men\'s white casual wear',
@@ -61,6 +63,8 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/61tbE69D31L._UL1500_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
       {
         'name': 'Men\'s purple casual wear',
@@ -91,6 +95,8 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/61T-dMfRkYL._SX679._SX._UX._SY._UY_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
       {
         'name': 'Men\'s pink casual wear',
@@ -121,6 +127,8 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/61QcIHGixAL._UL1500_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
       {
         'name': 'Men\'s multicolor casual wear',
@@ -151,6 +159,8 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/71e2uJ0gtXL._UL1500_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
     ],
   },
@@ -186,9 +196,17 @@ List<Map<String, dynamic>> allProduct = [
           'https://m.media-amazon.com/images/I/715c1HNYIBL._UL1080_.jpg',
         ],
         'quantity': 0,
+        'isBuy': false,
+        'isLike': false,
       },
     ],
   },
 ];
 
-List<Map<String, dynamic>> CartList = [];
+List<Map<String, dynamic>> cartList = [];
+List<Map<String, dynamic>> favList = [];
+
+bool isHome = true;
+bool isFav = false;
+bool isBag = false;
+bool isProfile = false;
