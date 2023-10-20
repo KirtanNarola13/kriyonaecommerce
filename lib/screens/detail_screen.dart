@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 
 class DetailPage extends StatefulWidget {
@@ -12,6 +11,11 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
+    final PageController _pageController = PageController(
+      viewportFraction: 0.9, // Adjust this value as needed
+    );
+    Map<String, dynamic> data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -60,19 +64,24 @@ class _DetailPageState extends State<DetailPage> {
             ),
             Expanded(
               flex: 18,
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        'https://m.media-amazon.com/images/I/61H-EYslpUL._UL1500_.jpg'),
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
-                  border: Border.all(color: Colors.grey.shade700, width: 2),
-                ),
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: data['img'].length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(data['img'][index]),
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      border: Border.all(color: Colors.grey.shade700, width: 2),
+                    ),
+                  );
+                },
               ),
             ),
             Expanded(
@@ -81,7 +90,7 @@ class _DetailPageState extends State<DetailPage> {
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade700, width: 2),
-                  color: Colors.amberAccent.withOpacity(0.3),
+                  color: Colors.grey.shade200.withOpacity(0.1),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
@@ -104,7 +113,7 @@ class _DetailPageState extends State<DetailPage> {
                               ),
                             ),
                             Text(
-                              "\$259",
+                              "${data['price']}",
                               style: TextStyle(
                                 letterSpacing: 2,
                                 fontSize: 18,
@@ -128,6 +137,7 @@ class _DetailPageState extends State<DetailPage> {
                                   style: TextStyle(
                                     color:
                                         Colors.grey.shade700.withOpacity(0.8),
+                                    fontSize: 14,
                                   ),
                                 ),
                               ),
@@ -150,8 +160,7 @@ class _DetailPageState extends State<DetailPage> {
                               height: height / 0.8,
                               width: width / 2,
                               decoration: BoxDecoration(
-                                color: Colors.amberAccent.shade100
-                                    .withOpacity(0.5),
+                                color: Colors.grey.shade500.withOpacity(0.3),
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(20),
                                 ),
@@ -175,8 +184,7 @@ class _DetailPageState extends State<DetailPage> {
                               height: height / 0.8,
                               width: width / 6,
                               decoration: BoxDecoration(
-                                color: Colors.amberAccent.shade100
-                                    .withOpacity(0.5),
+                                color: Colors.grey.shade500.withOpacity(0.3),
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(20),
                                 ),

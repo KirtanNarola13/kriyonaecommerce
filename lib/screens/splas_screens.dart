@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kriyona/main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 8),
       () {
         Navigator.of(context).pushReplacementNamed('home_page');
       },
@@ -35,7 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
               alignment: Alignment.center,
               height: h / 3,
               width: w / 1,
-              child: Image.asset('lib/img/splash_screen.gif'),
+              child: Image.asset(
+                'lib/img/splash_screen.gif',
+              ),
             ),
             SizedBox(
               height: h / 3,

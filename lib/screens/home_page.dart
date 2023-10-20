@@ -47,11 +47,11 @@ class _HomePageState extends State<HomePage> {
             bottomRight: Radius.circular(25),
           ),
         ),
-        backgroundColor: Colors.amberAccent,
+        backgroundColor: Colors.grey.shade200.withOpacity(0.3),
         title: Text(
           "KRIYONA",
           style: TextStyle(
-            color: Colors.grey.shade700,
+            color: Colors.black,
             fontSize: 13,
             letterSpacing: 3,
           ),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: Icon(
               Icons.favorite_outline,
-              color: Colors.grey.shade700,
+              color: Colors.black,
             ),
           ),
           IconButton(
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: Icon(
               LineIcons.shoppingBag,
-              color: Colors.grey.shade700,
+              color: Colors.black,
             ),
           ),
         ],
@@ -175,8 +175,9 @@ class _HomePageState extends State<HomePage> {
                                 ...data.map((e) {
                                   return GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context)
-                                          .pushNamed('detail_page');
+                                      Navigator.of(context).pushNamed(
+                                          'detail_page',
+                                          arguments: e);
                                     },
                                     child: Container(
                                       margin: const EdgeInsets.only(
@@ -382,7 +383,8 @@ class _HomePageState extends State<HomePage> {
                                             height: height / 18.5,
                                             width: width / 10,
                                             decoration: BoxDecoration(
-                                              color: Colors.amberAccent,
+                                              color: Colors.grey.shade500
+                                                  .withOpacity(0.3),
                                               borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(20),
                                                 bottomRight:
@@ -435,14 +437,14 @@ class _HomePageState extends State<HomePage> {
               hoverColor: Colors.grey[100]!,
               gap: 10,
               tabActiveBorder: Border.all(
-                color: Colors.amberAccent.withOpacity(0.5),
+                color: Colors.black,
               ),
-              activeColor: Colors.amber,
+              activeColor: Colors.black,
               iconSize: 20,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               textSize: 20,
               tabBackgroundColor: Colors.grey[50]!,
-              color: Colors.black,
+              color: Colors.grey.shade700.withOpacity(0.8),
               haptic: true,
               tabs: [
                 GButton(
